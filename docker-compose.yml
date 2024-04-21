@@ -1,4 +1,7 @@
 version: "2"
+networks:
+  react:
+    name: react
 services:
   nginx-react:
     restart : on-failure
@@ -8,6 +11,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 80:80
+    network:
+      - react
     volumes : 
         - ./node_modules
         - .:/app
